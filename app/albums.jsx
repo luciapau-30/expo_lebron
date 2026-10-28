@@ -3,30 +3,43 @@ import { View, Text, StyleSheet, Pressable, Image, ScrollView, SafeAreaView } fr
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 
-export default function GenresPage() {
+export default function AlbumsPage() {
   const router = useRouter();
 
-  const genres = [
+  const albums = [
     {
       id: '1',
-      title: 'LEBRON JAMES',
-      imageUrl: require('../Components/Genre.png')
+      title: 'Lakers Legacy',
+      type: 'Album',
+      artist: 'The Lakers',
+      imageUrl: require('../assets/images/lakers-album.png')
     },
-    
-    
+    {
+      id: '2',
+      title: 'Cleveland Classics',
+      type: 'Album',
+      artist: 'The Cavs',
+      imageUrl: require('../assets/images/cavs-album.png')
+    }
   ];
 
-  const renderGenreRow = (genre) => (
-    <View key={genre.id} style={styles.genreRow}>
-      <View style={styles.genreInfo}>
+  const renderAlbumRow = (album) => (
+    <View key={album.id} style={styles.albumRow}>
+      <View style={styles.albumInfo}>
         <Image
-          source={genre.imageUrl}
-          style={styles.genreImage}
+          source={album.imageUrl}
+          style={styles.albumImage}
         />
-        <View style={styles.genreTextContainer}>
-          <Text style={styles.genreTitle}>{genre.title}</Text>
+        <View style={styles.albumTextContainer}>
+          <Text style={styles.albumTitle}>{album.title}</Text>
+          <Text style={styles.albumDetails}>
+            {album.type} • {album.artist}
+          </Text>
         </View>
       </View>
+      <Pressable style={styles.addButton}>
+        <Text style={styles.addButtonText}>+</Text>
+      </Pressable>
     </View>
   );
 
@@ -43,11 +56,11 @@ export default function GenresPage() {
           >
             <Text style={styles.backButtonText}>← Back</Text>
           </Pressable>
-          <Text style={styles.title}>Genres & Moods</Text>
+          <Text style={styles.title}>Albums</Text>
         </View>
 
-        <ScrollView style={styles.genreList}>
-          {genres.map(genre => renderGenreRow(genre))}
+        <ScrollView style={styles.albumList}>
+          {albums.map(album => renderAlbumRow(album))}
         </ScrollView>
       </LinearGradient>
     </SafeAreaView>
@@ -81,33 +94,51 @@ const styles = StyleSheet.create({
     color: '#FDB927',
     marginBottom: 8,
   },
-  genreList: {
+  albumList: {
     flex: 1,
     paddingHorizontal: 16,
     marginBottom: 80, // Space for navbar
   },
-  genreRow: {
+  albumRow: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
     paddingVertical: 8,
   },
-  genreInfo: {
+  albumInfo: {
     flexDirection: 'row',
     alignItems: 'center',
     flex: 1,
   },
-  genreImage: {
+  albumImage: {
     width: 56,
     height: 56,
     marginRight: 12,
   },
-  genreTextContainer: {
+  albumTextContainer: {
     flex: 1,
     justifyContent: 'center',
   },
-  genreTitle: {
+  albumTitle: {
     color: '#FDB927',
     fontSize: 16,
     fontWeight: '500',
-  }
+    marginBottom: 4,
+  },
+  albumDetails: {
+    color: '#B3B3B3',
+    fontSize: 14,
+  },
+  addButton: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  addButtonText: {
+    color: '#FDB927',
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
 });

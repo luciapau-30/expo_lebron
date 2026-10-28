@@ -3,43 +3,30 @@ import { View, Text, StyleSheet, Pressable, Image, ScrollView, SafeAreaView } fr
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 
-export default function ArtistsPage() {
+export default function GenresPage() {
   const router = useRouter();
 
-  const artists = [
+  const genres = [
     {
       id: '1',
-      name: 'Lesmirk',
-      verified: true,
-      imageUrl: require('../Components/Lesmirk.png')
+      title: 'LEBRON JAMES',
+      imageUrl: require('../assets/images/genre.png')
     },
-    {
-      id: '2',
-      name: 'Le taco',
-      verified: true,
-      imageUrl: require('../Components/LeTaco.png')
-    }
+    
+    
   ];
 
-  const renderArtistRow = (artist) => (
-    <View key={artist.id} style={styles.artistRow}>
-      <View style={styles.artistInfo}>
+  const renderGenreRow = (genre) => (
+    <View key={genre.id} style={styles.genreRow}>
+      <View style={styles.genreInfo}>
         <Image
-          source={artist.imageUrl}
-          style={styles.artistImage}
+          source={genre.imageUrl}
+          style={styles.genreImage}
         />
-        <View style={styles.artistNameContainer}>
-          <Text style={styles.artistName}>
-            {artist.name}
-            {artist.verified && (
-              <Text style={styles.verifiedBadge}> 🔵</Text>
-            )}
-          </Text>
+        <View style={styles.genreTextContainer}>
+          <Text style={styles.genreTitle}>{genre.title}</Text>
         </View>
       </View>
-      <Pressable style={styles.followButton}>
-        <Text style={styles.followButtonText}>Follow</Text>
-      </Pressable>
     </View>
   );
 
@@ -56,11 +43,11 @@ export default function ArtistsPage() {
           >
             <Text style={styles.backButtonText}>← Back</Text>
           </Pressable>
-          <Text style={styles.title}>Artists</Text>
+          <Text style={styles.title}>Genres & Moods</Text>
         </View>
 
-        <ScrollView style={styles.artistList}>
-          {artists.map(artist => renderArtistRow(artist))}
+        <ScrollView style={styles.genreList}>
+          {genres.map(genre => renderGenreRow(genre))}
         </ScrollView>
       </LinearGradient>
     </SafeAreaView>
@@ -94,49 +81,33 @@ const styles = StyleSheet.create({
     color: '#FDB927',
     marginBottom: 8,
   },
-  artistList: {
+  genreList: {
     flex: 1,
     paddingHorizontal: 16,
     marginBottom: 80, // Space for navbar
   },
-  artistRow: {
+  genreRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
     paddingVertical: 8,
   },
-  artistInfo: {
+  genreInfo: {
     flexDirection: 'row',
     alignItems: 'center',
     flex: 1,
   },
-  artistImage: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
+  genreImage: {
+    width: 56,
+    height: 56,
     marginRight: 12,
   },
-  artistNameContainer: {
+  genreTextContainer: {
     flex: 1,
+    justifyContent: 'center',
   },
-  artistName: {
+  genreTitle: {
     color: '#FDB927',
     fontSize: 16,
     fontWeight: '500',
-  },
-  verifiedBadge: {
-    fontSize: 14,
-  },
-  followButton: {
-    borderColor: '#FDB927',
-    borderWidth: 1,
-    borderRadius: 20,
-    paddingHorizontal: 16,
-    paddingVertical: 6,
-  },
-  followButtonText: {
-    color: '#FDB927',
-    fontSize: 14,
-    fontWeight: '600',
-  },
+  }
 });

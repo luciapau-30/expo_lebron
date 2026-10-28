@@ -1,51 +1,48 @@
 # LeBoogie 🏀🎵
 
-![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![Expo](https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=expo&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+A Lakers-themed music app UI, inspired by Spotify and built with React Native and Expo. (LeBron + Boogie = LeBoogie.)
 
-A Lakers-themed music streaming app inspired by Spotify. Combining basketball and music with Los Angeles Lakers purple and gold branding.
+This is a front-end prototype: screens and navigation are complete, and the content is mock data. Playback and a real music API are not wired up yet.
 
-**Project Concept:** LeBoogie (LeBron + Boogie) is a modern React Native music player UI prototype featuring Lakers team colors and basketball culture aesthetics.
+## Features
 
-## 🎯 What This Project Showcases
+- **Home:** Recently Played, Made For You and Your Playlists rows with horizontal scrolling
+- **Search:** search bar, a category grid (Artists, Albums, Playlists, Genres) and Top Songs
+- **Browse screens** for artists, albums, playlists and genres
+- **Bottom navigation** shared across screens through the root layout
+- Lakers purple (`#552583`) and gold (`#FDB927`) theme with gradient backgrounds
 
-- **Modern React Native** - File-based routing with Expo Router
-- **UI/UX Design** - Custom Lakers purple/gold branding
-- **TypeScript** - Type-safe mobile development
-- **Cross-platform** - Runs on iOS and Android
+## Tech stack
 
-## ✨ Features
+React Native · Expo (SDK 52) · Expo Router (file-based routing) · JavaScript · expo-linear-gradient · @expo/vector-icons
 
-- 🏠 **Home Screen** - Recently Played, Made For You playlists
-- 🔍 **Search** - Browse by Artists, Albums, Playlists, Genres
-- 🎨 **Lakers Theme** - Purple (#552583) and Gold (#FDB927) color scheme
-- 📱 **Bottom Navigation** - Smooth routing between sections
-- 🌈 **Gradient Backgrounds** - Beautiful purple-to-black gradients
+Runs on iOS, Android and the web.
 
-## 🚀 Quick Start
+## Run it
 
 ```bash
-cd Crabby-main
 npm install
 npx expo start
 ```
 
-Then scan the QR code with Expo Go on your phone!
+Then scan the QR code with Expo Go, press `i` / `a` for a simulator, or press `w` to open it in a browser.
 
-## 📖 Full Documentation
+## Project structure
 
-See [Crabby-main/README.md](./Crabby-main/README.md) for complete documentation including:
-- Detailed features
-- Tech stack breakdown
-- Project structure
-- Development instructions
-- Future enhancements
+```
+app/                  # Screens (Expo Router: each file is a route)
+├── _layout.tsx       # Root layout with the bottom navbar
+├── index.tsx         # Entry route → Home
+├── home.jsx
+├── SearchPage.jsx
+├── artists.jsx, albums.jsx, playlists.jsx, genres.jsx
+└── navbar.jsx        # Bottom navigation
+assets/images/        # App icons and album/artist artwork
+```
 
-## 🏀 Why "LeBoogie"?
+## What I'd build next
 
-Combining **LeBron** James (Lakers legend) + **Boogie** (music/dancing) = A fun Lakers-themed music app!
-
----
-
-**Built with 💜💛 for Lakers fans and music lovers** • *Go Lakers!* 🏀
+- Connect the Spotify Web API for real artists, albums and search
+- Audio playback with a now-playing bar
+- Pull shared UI (cards, rows, headers) into reusable components
+- Saved playlists and likes
